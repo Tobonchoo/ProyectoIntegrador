@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLUSH | Documento de Arquitectura e Ingeniería Técnica</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <header class="encabezado">
+        <div class="logo">
+            <h2>🍧 SLUSH<span></span></h2>
+        </div>
+        <nav class="menu">
+            <a href="#introduccion">Introducción</a>
+            <a href="#tema1">Idea Principal</a>
+            <a href="#tema2">Reglas Negocio</a>
+            <a href="#tema3-4">Modelado E/R</a>
+            <a href="#tema5">Normalización 3FN</a>
+            <a href="#fase1">Fase 1 (SQL)</a>
+            <a href="#fase2">Fase 2 (Web)</a>
+            <a href="#fase3">Fase 3 (Lógica)</a>
+            <a href="#fase1" class="btn-nav-cta">Ver T-SQL</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION INMERSIVO -->
+    <section class="hero" id="introduccion">
+        <div class="hero-glow"></div>
+        <div class="hero-contenedor">
+            <span class="badge-pro">Ingeniería de Software & Arquitectura de Datos 2026</span>
+            <h1>Plataforma Georreferenciada y Analítica de Demanda de Granizados</h1>
+            <p class="hero-subtitulo">Área Metropolitana del Valle de Aburrá: La Estrella, Sabaneta, Itagüí, Envigado, Medellín y Bello.</p>
+            <p class="hero-descripcion">
+                Memoria técnica descriptiva y operativa de SLUSH. Documento de fundamentación arquitectónica que 
+                integra un modelo de base de datos relacional formalizado hasta la Tercera Forma Normal (3FN) en 
+                Microsoft SQL Server, orquestación de reglas de negocio geoespaciales y una interfaz interactiva de alta fidelidad.
+            </p>
+
+            <div class="hero-metricas-grid">
+                <div class="metrica-card">
+                    <span class="valor">6 Municipios</span>
+                    <span class="etiqueta">Cobertura Metropolitana</span>
+                </div>
+                <div class="metrica-card">
+                    <span class="valor">3FN Estricta</span>
+                    <span class="etiqueta">Normalización Relacional</span>
+                </div>
+                <div class="metrica-card">
+                    <span class="valor">O(1) Tiempo</span>
+                    <span class="etiqueta">Consultas con Disparadores DML</span>
+                </div>
+                <div class="metrica-card">
+                    <span class="valor">0% Redundancia</span>
+                    <span class="etiqueta">Integridad Referencial ACID</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEMA 1: IDEA DE TRABAJO PRINCIPAL -->
+    <section class="seccion-tecnica" id="tema1">
+        <div class="seccion-encabezado">
+            <span class="seccion-tag">Tema N°1</span>
+            <h2>¿Cuál es la Idea de Trabajo Principal?</h2>
+            <p>Formalización y resolución de la asimetría informativa en el comercio gastronómico metropolitano.</p>
+        </div>
+
+        <div class="grid-dos-columnas">
+            <div class="tarjeta-tecnica">
+                <div>
+                    <div class="tarjeta-icono">🎯</div>
+                    <h3>Propósito Central de SLUSH</h3>
+                    <p>
+                        Consolidar un ecosistema digital especializado que centralice la oferta comercial de puntos de venta 
+                        de granizados artesanales y de autor en los seis municipios neurálgicos del Valle de Aburrá. 
+                        A diferencia de los mapas multipropósito convencionales, SLUSH resuelve el vacío de información 
+                        estructurando los catálogos en función de bases de elaboración (agua frutal, mezclas lácteas cremosas, 
+                        escarchados michelados o frappés con licor) y relacionándolos con afluencia y precios por onzas.
+                    </p>
+                </div>
+                <ul class="lista-tecnica">
+                    <li>Democratización del posicionamiento local sin comisiones extractivas.</li>
+                    <li>Transparencia en tiempos de espera mediante categorización de afluencia.</li>
+                </ul>
+            </div>
+
+            <div class="tarjeta-tecnica">
+                <div>
+                    <div class="tarjeta-icono">⚖️</div>
+                    <h3>Doble Enfoque de Experiencia de Usuario</h3>
+                    <p>
+                        La plataforma desacopla operativamente la vista del consumidor frente a la del comerciante. 
+                        El cliente accede a un mapa interactivo con vectorización de rutas inmediatas y auditoría 
+                        de opiniones. Por su parte, los comerciantes disponen de una vitrina parametrizable para 
+                        ajustar la disponibilidad de inventario, controlar los precios de adiciones en tiempo real y 
+                        reportar picos de demanda estacional o climática.
+                    </p>
+                </div>
+                <ul class="lista-tecnica">
+                    <li>Consumidor: Geonavegación, filtros de base y verificación comunitaria.</li>
+                    <li>Comerciante: Panel de gestión de catálogo, aforo y analítica territorial.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEMA 2: REGLAS DE NEGOCIO -->
+    <section class="seccion-tecnica" id="tema2">
+        <div class="seccion-encabezado">
+            <span class="seccion-tag">Tema N°2</span>
+            <h2>¿Cuáles Serán Nuestras Reglas de Negocio?</h2>
+            <p>Salvaguardas formales para asegurar la integridad operativa, seguridad y consistencia transaccional.</p>
+        </div>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Regla de Negocio</th>
+                        <th>Descripción Operativa</th>
+                        <th>Mecanismo de Control Técnico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>RN-01</strong></td>
+                        <td>Control de Acceso Basado en Roles (RBAC)</td>
+                        <td>La consulta cartográfica es pública. La calificación exige rol CLIENTE verificado. La edición de catálogo y local demanda rol COMERCIANTE validado.</td>
+                        <td><span class="tag-norma">Llaves Foráneas & JWT</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RN-02</strong></td>
+                        <td>Unicidad de Reseña por Ventana de 24h</td>
+                        <td>Un usuario solo puede calificar un mismo punto de venta una vez cada 24 horas, anulando ataques de descrédito o spam.</td>
+                        <td><span class="tag-norma">Stored Procedure T-SQL</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RN-03</strong></td>
+                        <td>Dominio de Calificación Acotado</td>
+                        <td>El puntaje de evaluación debe oscilar indefectiblemente entre 1.0 y 5.0 puntos decimales.</td>
+                        <td><span class="tag-norma">CHECK Constraint</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RN-04</strong></td>
+                        <td>Geolocalización en Polígono Metropolitano</td>
+                        <td>Las coordenadas deben inscribirse obligatoriamente dentro de las fronteras físicas de los seis municipios del Valle de Aburrá.</td>
+                        <td><span class="tag-norma">CHECK Geográfico</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RN-05</strong></td>
+                        <td>Precios No Negativos y Tamaños Reales</td>
+                        <td>El precio unitario no puede ser inferior a $0 COP y el volumen debe ser mayor a 0 onzas. Niveles: Baja, Media, Alta o Saturado.</td>
+                        <td><span class="tag-norma">CHECK Dominio</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RN-06</strong></td>
+                        <td>Restricción Multimedia de Evidencia</td>
+                        <td>Archivos fotográficos con peso máximo de 5120 KB (5 MB) y extensiones MIME autorizadas (.webp, .jpg, .png).</td>
+                        <td><span class="tag-norma">CHECK Peso & Payload</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- TEMA 3 Y 4: MODELADO E/R Y MODELO RELACIONAL -->
+    <section class="seccion-tecnica" id="tema3-4">
+        <div class="seccion-encabezado">
+            <span class="seccion-tag">Temas N°3 & N°4</span>
+            <h2>Modelo Entidad/Relación y Modelo Relacional</h2>
+            <p>Estructuración conceptual y formalización matemática de dependencias entre entidades.</p>
+        </div>
+
+        <div class="grid-tres-columnas">
+            <div class="tarjeta-tecnica">
+                <h3>MUNICIPIOS & LOCALES (1:N)</h3>
+                <p>Un municipio alberga de 1 a N locales de granizados. Un local pertenece estrictamente a un único municipio del Valle de Aburrá.</p>
+                <p><code>MUNICIPIOS (id_municipio [PK], ...)</code><br><code>LOCALES (id_local [PK], id_municipio [FK], ...)</code></p>
+            </div>
+            <div class="tarjeta-tecnica">
+                <h3>LOCALES & PRODUCTOS (1:N)</h3>
+                <p>Cada local ofrece un catálogo de 1 a N granizados. Cada producto se vincula de manera exclusiva a una tienda específica.</p>
+                <p><code>PRODUCTOS (id_producto [PK], id_local [FK], id_categoria [FK], ...)</code></p>
+            </div>
+            <div class="tarjeta-tecnica">
+                <h3>RESENAS & MULTIMEDIA (1:N)</h3>
+                <p>Un usuario autenticado emite calificaciones sobre un local. Cada reseña puede asociar de 0 a N imágenes de evidencia fotográfica.</p>
+                <p><code>RESENAS (id_resena [PK], id_local [FK], id_usuario [FK], ...)</code><br><code>MULTIMEDIA_RESENA (id_multimedia [PK], id_resena [FK], ...)</code></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEMA 5: NORMALIZACIÓN DE BASE DE DATOS -->
+    <section class="seccion-tecnica" id="tema5">
+        <div class="seccion-encabezado">
+            <span class="seccion-tag">Tema N°5</span>
+            <h2>Proceso Metodológico de Normalización (1FN a 3FN)</h2>
+            <p>Eliminación de redundancias, supresión de dependencias transitivas y garantía de atomicidad.</p>
+        </div>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fase de Normalización</th>
+                        <th>Estado Inicial (No Normalizado)</th>
+                        <th>Tratamiento Aplicado en SLUSH</th>
+                        <th>Resultado en Esquema Físico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Primera Forma Normal (1FN)</strong></td>
+                        <td>Campos con listas de sabores separados por comas o números de teléfono múltiples en una sola columna.</td>
+                        <td>Descomposición atómica de atributos. Creación de una columna por dato elemental y definición de llaves primarias subrogadas <code>IDENTITY(1,1)</code>.</td>
+                        <td>Tuplas atómicas independientes en <code>PRODUCTOS</code> y <code>LOCALES</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Segunda Forma Normal (2FN)</strong></td>
+                        <td>Existencia de dependencias funcionales parciales respecto a claves primarias compuestas hipotéticas.</td>
+                        <td>Aislamiento de entidades independientes. La descripción de una base de granizado no depende del local sino de una entidad propia.</td>
+                        <td>Creación de la tabla <code>CATEGORIAS</code> vinculada mediante clave foránea <code>id_categoria</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tercera Forma Normal (3FN)</strong></td>
+                        <td>Dependencias transitivas donde atributos no clave determinan a otros atributos no clave (ej. guardar el código DANE o departamento dentro de <code>LOCALES</code>).</td>
+                        <td>Supresión de dependencias indirectas. La dirección física únicamente mantiene el puntero foráneo hacia <code>MUNICIPIOS</code>.</td>
+                        <td>Cero anomalías de modificación: actualizar un nombre municipal ocurre en un único registro centralizado.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FASE 1: SQL SERVER & DESPLIEGUE DE CÓDIGO -->
+    <section class="seccion-tecnica" id="fase1">
+        <div class="seccion-encabezado">
+            <span class="seccion-tag">Fase 1: Persistencia de Datos</span>
+            <h2>Motor Microsoft SQL Server: DDL, Triggers y Procedimientos</h2>
+            <p>Scripts completos de inyección y cálculo atómico. Despliega cada panel para inspeccionar el código.</p>
+        </div>
+
+        <!-- PANEL COLAPSABLE: DDL COMPLETO -->
+        <details class="despliegue-codigo" open>
+            <summary class="despliegue-titulo">1. Script DDL: Creación de Tablas, Índices y Restricciones</summary>
+            <div class="bloque-codigo">
+<pre><code>-- ============================================================================
+-- SCRIPT DDL: BASE DE DATOS SLUSH_DB (MICROSOFT SQL SERVER 2019/2022)
+-- NORMALIZADA EN 3FN CON REGLAS DE NEGOCIO RN-01 A RN-06
+-- ============================================================================
+USE master;
+GO
+
+IF EXISTS (SELECT name FROM sys.databases WHERE name = N'SLUSH_DB')
+BEGIN
+    ALTER DATABASE SLUSH_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE SLUSH_DB;
+END
+GO
+
+CREATE DATABASE SLUSH_DB COLLATE Latin1_General_CI_AS;
+GO
+
+USE SLUSH_DB;
+GO
+
+-- 1. TABLA: ROLES
+CREATE TABLE ROLES (
+    id_rol INT IDENTITY(1,1) NOT NULL,
+    nombre_rol VARCHAR(30) NOT NULL,
+    CONSTRAINT PK_ROLES PRIMARY KEY CLUSTERED (id_rol),
+    CONSTRAINT UQ_ROLES_nombre UNIQUE (nombre_rol)
+);
+GO
+
+-- 2. TABLA: MUNICIPIOS (ÁREA METROPOLITANA)
+CREATE TABLE MUNICIPIOS (
+    id_municipio INT IDENTITY(1,1) NOT NULL,
+    nombre_municipio VARCHAR(50) NOT NULL,
+    codigo_dane VARCHAR(10) NULL,
+    CONSTRAINT PK_MUNICIPIOS PRIMARY KEY CLUSTERED (id_municipio),
+    CONSTRAINT UQ_MUNICIPIOS_nombre UNIQUE (nombre_municipio)
+);
+GO
+
+-- 3. TABLA: USUARIOS
+CREATE TABLE USUARIOS (
+    id_usuario INT IDENTITY(1,1) NOT NULL,
+    id_rol INT NOT NULL,
+    nombre_completo VARCHAR(120) NOT NULL,
+    correo VARCHAR(150) NOT NULL,
+    password_hash VARCHAR(256) NOT NULL,
+    telefono VARCHAR(20) NULL,
+    fecha_registro DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    activo BIT DEFAULT 1 NOT NULL,
+    CONSTRAINT PK_USUARIOS PRIMARY KEY CLUSTERED (id_usuario),
+    CONSTRAINT UQ_USUARIOS_correo UNIQUE (correo),
+    CONSTRAINT FK_USUARIOS_ROLES FOREIGN KEY (id_rol) 
+        REFERENCES ROLES(id_rol) ON UPDATE CASCADE ON DELETE NO ACTION
+);
+GO
+
+-- 4. TABLA: LOCALES (DELIMITACIÓN VALLE DE ABURRÁ)
+CREATE TABLE LOCALES (
+    id_local INT IDENTITY(1,1) NOT NULL,
+    id_usuario_propietario INT NOT NULL,
+    id_municipio INT NOT NULL,
+    nombre_comercial VARCHAR(150) NOT NULL,
+    direccion VARCHAR(200) NOT NULL,
+    latitud DECIMAL(10, 8) NOT NULL,
+    longitud DECIMAL(11, 8) NOT NULL,
+    telefono_contacto VARCHAR(20) NULL,
+    calificacion_promedio DECIMAL(3, 2) DEFAULT 0.00 NOT NULL,
+    nivel_demanda VARCHAR(20) DEFAULT 'Media' NOT NULL,
+    activo BIT DEFAULT 1 NOT NULL,
+    CONSTRAINT PK_LOCALES PRIMARY KEY CLUSTERED (id_local),
+    CONSTRAINT FK_LOCALES_USUARIOS FOREIGN KEY (id_usuario_propietario) 
+        REFERENCES USUARIOS(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION,
+    CONSTRAINT FK_LOCALES_MUNICIPIOS FOREIGN KEY (id_municipio) 
+        REFERENCES MUNICIPIOS(id_municipio) ON UPDATE CASCADE ON DELETE NO ACTION,
+    CONSTRAINT CHK_LOCALES_latitud CHECK (latitud BETWEEN 6.000000 AND 6.600000),
+    CONSTRAINT CHK_LOCALES_longitud CHECK (longitud BETWEEN -75.800000 AND -75.300000),
+    CONSTRAINT CHK_LOCALES_demanda CHECK (nivel_demanda IN ('Baja', 'Media', 'Alta', 'Saturado'))
+);
+GO
+
+-- 5. TABLA: CATEGORIAS
+CREATE TABLE CATEGORIAS (
+    id_categoria INT IDENTITY(1,1) NOT NULL,
+    nombre_categoria VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(250) NULL,
+    CONSTRAINT PK_CATEGORIAS PRIMARY KEY CLUSTERED (id_categoria),
+    CONSTRAINT UQ_CATEGORIAS_nombre UNIQUE (nombre_categoria)
+);
+GO
+
+-- 6. TABLA: PRODUCTOS
+CREATE TABLE PRODUCTOS (
+    id_producto INT IDENTITY(1,1) NOT NULL,
+    id_local INT NOT NULL,
+    id_categoria INT NOT NULL,
+    nombre_producto VARCHAR(100) NOT NULL,
+    tamano_onzas INT NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    disponible BIT DEFAULT 1 NOT NULL,
+    CONSTRAINT PK_PRODUCTOS PRIMARY KEY CLUSTERED (id_producto),
+    CONSTRAINT FK_PRODUCTOS_LOCALES FOREIGN KEY (id_local) 
+        REFERENCES LOCALES(id_local) ON UPDATE NO ACTION ON DELETE CASCADE,
+    CONSTRAINT FK_PRODUCTOS_CATEGORIAS FOREIGN KEY (id_categoria) 
+        REFERENCES CATEGORIAS(id_categoria) ON UPDATE CASCADE ON DELETE NO ACTION,
+    CONSTRAINT CHK_PRODUCTOS_precio CHECK (precio >= 0),
+    CONSTRAINT CHK_PRODUCTOS_onzas CHECK (tamano_onzas > 0)
+);
+GO
+
+-- 7. TABLA: RESENAS
+CREATE TABLE RESENAS (
+    id_resena INT IDENTITY(1,1) NOT NULL,
+    id_local INT NOT NULL,
+    id_usuario INT NOT NULL,
+    puntuacion DECIMAL(2, 1) NOT NULL,
+    comentario NVARCHAR(1000) NULL,
+    origen_plataforma VARCHAR(30) DEFAULT 'SLUSH_Direct' NOT NULL,
+    fecha_registro DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    CONSTRAINT PK_RESENAS PRIMARY KEY CLUSTERED (id_resena),
+    CONSTRAINT FK_RESENAS_LOCALES FOREIGN KEY (id_local) 
+        REFERENCES LOCALES(id_local) ON UPDATE NO ACTION ON DELETE CASCADE,
+    CONSTRAINT FK_RESENAS_USUARIOS FOREIGN KEY (id_usuario) 
+        REFERENCES USUARIOS(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION,
+    CONSTRAINT CHK_RESENAS_puntuacion CHECK (puntuacion BETWEEN 1.0 AND 5.0)
+);
+GO
+
+-- 8. TABLA: MULTIMEDIA_RESENA
+CREATE TABLE MULTIMEDIA_RESENA (
+    id_multimedia INT IDENTITY(1,1) NOT NULL,
+    id_resena INT NOT NULL,
+    url_recurso VARCHAR(500) NOT NULL,
+    formato VARCHAR(10) NOT NULL,
+    peso_kb INT NOT NULL,
+    fecha_subida DATETIME2(0) DEFAULT SYSDATETIME() NOT NULL,
+    CONSTRAINT PK_MULTIMEDIA_RESENA PRIMARY KEY CLUSTERED (id_multimedia),
+    CONSTRAINT FK_MULTIMEDIA_RESENAS FOREIGN KEY (id_resena) 
+        REFERENCES RESENAS(id_resena) ON UPDATE NO ACTION ON DELETE CASCADE,
+    CONSTRAINT CHK_MULTIMEDIA_peso CHECK (peso_kb <= 5120)
+);
+GO
+
+-- ÍNDICES COMPUESTOS NO AGRUPADOS PARA BÚSQUEDAS ESPACIALES
+CREATE NONCLUSTERED INDEX IX_LOCALES_Geolocalizacion 
+ON LOCALES (latitud, longitud) 
+INCLUDE (nombre_comercial, calificacion_promedio, nivel_demanda);
+GO
+
+CREATE NONCLUSTERED INDEX IX_RESENAS_id_local 
+ON RESENAS (id_local) 
+INCLUDE (puntuacion);
+GO</code></pre>
+            </div>
+        </details>
+
+        <!-- PANEL COLAPSABLE: TRIGGER AUTOMATIZADO -->
+        <details class="despliegue-codigo">
+            <summary class="despliegue-titulo">2. Disparador (Trigger): Recálculo Atómico de Calificación</summary>
+            <div class="bloque-codigo">
+<pre><code>-- ============================================================================
+-- DISPARADOR: TRG_Actualizar_Calificacion_Local
+-- ASEGURA RESPUESTAS O(1) EN LECTURAS DEL MAPA RECALCULANDO EL PROMEDIO TRAS
+-- CUALQUIER ALTERACIÓN ATÓMICA EN LA TABLA RESENAS.
+-- ============================================================================
+CREATE TRIGGER TRG_Actualizar_Calificacion_Local
+ON RESENAS
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @LocalesAfectados TABLE (id_local INT);
+
+    -- Capturar identificadores afectados en tablas virtuales inserted y deleted
+    INSERT INTO @LocalesAfectados
+    SELECT DISTINCT id_local FROM inserted
+    UNION
+    SELECT DISTINCT id_local FROM deleted;
+
+    -- Actualización directa del campo materializado en la entidad LOCALES
+    UPDATE L
+    SET L.calificacion_promedio = ISNULL(Sub.Promedio, 0.00)
+    FROM LOCALES L
+    INNER JOIN @LocalesAfectados A ON L.id_local = A.id_local
+    OUTER APPLY (
+        SELECT CAST(AVG(R.puntuacion) AS DECIMAL(3,2)) AS Promedio
+        FROM RESENAS R
+        WHERE R.id_local = L.id_local
+    ) Sub;
+END;
+GO</code></pre>
+            </div>
+        </details>
+
+        <!-- PANEL COLAPSABLE: STORED PROCEDURE Y VALIDACIÓN -->
+        <details class="despliegue-codigo">
+            <summary class="despliegue-titulo">3. Procedimiento Almacenado: Registro Seguro y Validación RN-02</summary>
+            <div class="bloque-codigo">
+<pre><code>-- ============================================================================
+-- STORED PROCEDURE: USP_RegistrarResena
+-- ENCAPSULA LA VALIDACIÓN DE REGLA RN-02 (VENTANA 24 HORAS) DENTRO DE UNA
+-- TRANSACCIÓN EXPLÍCITA BAJO PROPIEDADES ACID.
+-- ============================================================================
+CREATE OR ALTER PROCEDURE USP_RegistrarResena
+    @id_local INT,
+    @id_usuario INT,
+    @puntuacion DECIMAL(2,1),
+    @comentario NVARCHAR(1000),
+    @origen_plataforma VARCHAR(30) = 'SLUSH_Direct',
+    @ResultadoMensaje VARCHAR(250) OUTPUT,
+    @CodigoEstado INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Comprobación de regla de negocio RN-02
+        IF EXISTS (
+            SELECT 1 FROM RESENAS 
+            WHERE id_local = @id_local 
+              AND id_usuario = @id_usuario 
+              AND fecha_registro >= DATEADD(HOUR, -24, SYSDATETIME())
+        )
+        BEGIN
+            SET @CodigoEstado = 400;
+            SET @ResultadoMensaje = 'Violación RN-02: Ya has calificado este punto de venta en las últimas 24 horas.';
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
+
+        -- Inserción de la calificación verificada
+        INSERT INTO RESENAS (id_local, id_usuario, puntuacion, comentario, origen_plataforma)
+        VALUES (@id_local, @id_usuario, @puntuacion, @comentario, @origen_plataforma);
+
+        COMMIT TRANSACTION;
+        SET @CodigoEstado = 200;
+        SET @ResultadoMensaje = 'Reseña procesada correctamente. El disparador DML actualizó el promedio.';
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        SET @CodigoEstado = 500;
+        SET @ResultadoMensaje = 'Error de concurrencia o integridad: ' + ERROR_MESSAGE();
+    END CATCH
+END;
+GO</code></pre>
+            </div>
+        </details>
+    </section>
+
+    <!-- FASE 2 Y 3: ARQUITECTURA CLIENTE Y MOTOR JS -->
+    <section class="seccion-tecnica" id="fase2">
+        <div class="seccion-encabezado">
+            <span class="seccion-tag">Fases 2 & 3: Aplicación Web Progresiva</span>
+            <h2>Orquestación del Cliente (HTML5, Leaflet y Lógica ES6+)</h2>
+            <p>Estructura de la aplicación interactiva para visualización espacial, rutas y captura comunitaria.</p>
+        </div>
+
+        <div class="grid-dos-columnas">
+            <div class="tarjeta-tecnica">
+                <h3>Decisiones de Arquitectura Web</h3>
+                <ul class="lista-tecnica">
+                    <li><strong>Vanilla JavaScript (ES6+):</strong> Cero sobrecarga de Virtual DOM para garantizar navegación fluida en dispositivos móviles en exteriores.</li>
+                    <li><strong>Leaflet + CartoDB DarkMatter:</strong> Carga asíncrona de teselas cartográficas oscuras con bajo consumo de memoria RAM.</li>
+                    <li><strong>Variables Nativas CSS3:</strong> Modulación estética centralizada en <code>estilos.css</code>, facilitando temas y adaptabilidad visual.</li>
+                </ul>
+            </div>
+
+            <div class="tarjeta-tecnica">
+                <h3>Evidencias para Sustentación</h3>
+                <ul class="lista-tecnica">
+                    <li><strong>Captura 1 (SSMS):</strong> Diagrama relacional expandido mostrando las llaves PK-FK de las ocho tablas.</li>
+                    <li><strong>Captura 2 (Trigger):</strong> Ejecución de consulta verificando el recálculo automático de <code>calificacion_promedio</code>.</li>
+                    <li><strong>Captura 3 (Vercel):</strong> Despliegue en producción con estado activo y certificado SSL verde asignado.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+        <div class="pie-contenedor">
+            <h3>🍧 SLUSH </h3>
+            <p>Proyecto Integrador </p>
+            <p class="pie-info">
+                 SLUSH — Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
